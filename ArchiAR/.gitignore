@@ -56,6 +56,7 @@ sysinfo.txt
 
 # Builds
 *.apk
+!InstantPreview.apk
 *.unitypackage
 
 # Crashlytics generated file
