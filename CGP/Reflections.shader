@@ -47,7 +47,7 @@
 
       float4 frag(vertexOutput input) : COLOR{
 
-        float3 reflected = reflect(input.viewDir, normalize(input.normalDir));
+        float3 reflected = reflect(input.viewDir, /*normalize(*/input.normalDir/*)*/);
 
         float3 mainTexPoint = texCUBE(_MainTex, reflected);
         float3 decalTexPoint = texCUBE(_DecalTex, reflected);
@@ -55,7 +55,7 @@
         float3 color = (1-_Blending) * mainTexPoint + _Blending * decalTexPoint;
         //Calcultes alpha based on brightness of reflection taking into account the minimum Transparency
         float alpha = (1-_Transparency) + _Transparency * ((color.r + color.g + color.b) / 3);
-
+        alpha = min(1.0, alpha / abs(dot(input.viewDir, input.normalDir))); //https://en.wikibooks.org/wiki/Cg_Programming/Unity/Silhouette_Enhancement
         //!!! == !!!
         //Alpha looks kinda crappy with jagged edges. Maybe use a different luminocity function?
         //Could be combined with a fresnell effect. Stronger reflection towards the "edges"
