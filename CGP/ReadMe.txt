@@ -4,8 +4,8 @@ To use the shader:
 - In the material, apply two different cubemaps
 - Apply the material to objects
 
-Included in the folder is UglyPanorama.jpg, which can be used as a cubemap. To use it:
-- Copy/import it into your Unity Project
+Included in the folder is UglyPanorama.jpg and urban_street_03_1k.hdr, which can be used as cubemaps. To use:
+- Copy/import into your Unity Project
 - In the textures import settings:
 -- Set Texture Shape to Cube
 -- Set Mapping to Latitude-Longtitude

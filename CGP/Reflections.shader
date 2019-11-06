@@ -6,6 +6,7 @@
     _DecalTex ("Nighttime", CUBE) = ""{}
     _Blending ("Blend Factor", Range(0,1)) = 1.0
     _Transparency ("Min Transparency", Range(0,1)) = 1.0
+    _Glossiness ("Silhouette enhancement", Range(1,10)) = 1.0
   }
   SubShader {
     Tags {"Queue"="Transparent"  }
@@ -23,6 +24,7 @@
       uniform samplerCUBE _DecalTex;
       uniform float _Blending;
       uniform float _Transparency;
+      uniform float _Glossiness;
 
       struct vertexInput {
         float4 pos : POSITION;
@@ -39,7 +41,7 @@
         vertexOutput output;
 
         output.viewDir = mul(unity_ObjectToWorld, input.pos).xyz - _WorldSpaceCameraPos;
-        output.normalDir = normalize(mul(float4(input.normal, 0.0), unity_WorldToObject).xyz); //Convert normals from Object Coords to World Coords.
+        output.normalDir = normalize(mul(float4(input.normal, 0.0), unity_WorldToObject).xyz); //Convert normals from Object Coords to World Coords (modelMatrixInverse).
         output.screenPos = UnityObjectToClipPos(input.pos);
 
         return output;
@@ -47,7 +49,7 @@
 
       float4 frag(vertexOutput input) : COLOR{
 
-        float3 reflected = reflect(input.viewDir, /*normalize(*/input.normalDir/*)*/);
+        float3 reflected = reflect(input.viewDir, input.normalDir);
 
         float3 mainTexPoint = texCUBE(_MainTex, reflected);
         float3 decalTexPoint = texCUBE(_DecalTex, reflected);
@@ -55,7 +57,9 @@
         float3 color = (1-_Blending) * mainTexPoint + _Blending * decalTexPoint;
         //Calcultes alpha based on brightness of reflection taking into account the minimum Transparency
         float alpha = (1-_Transparency) + _Transparency * ((color.r + color.g + color.b) / 3);
-        alpha = min(1.0, alpha / abs(dot(input.viewDir, input.normalDir))); //https://en.wikibooks.org/wiki/Cg_Programming/Unity/Silhouette_Enhancement
+        float enhancement = abs(dot(normalize(input.viewDir), input.normalDir)) * _Glossiness; //https://en.wikibooks.org/wiki/Cg_Programming/Unity/Silhouette_Enhancement
+        alpha = min(1.0, alpha / enhancement); 
+
         //!!! == !!!
         //Alpha looks kinda crappy with jagged edges. Maybe use a different luminocity function?
         //Could be combined with a fresnell effect. Stronger reflection towards the "edges"
