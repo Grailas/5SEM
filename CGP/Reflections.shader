@@ -56,7 +56,7 @@
         //Blending between mainTex and decalTex depending on _blending.
         float3 color = (1-_Blending) * mainTexPoint + _Blending * decalTexPoint;
         //Calcultes alpha based on brightness of reflection taking into account the minimum Transparency
-        float alpha = (1-_Transparency) + _Transparency * (0.2126*color.r + 0.07152*color.g + 0.0722*color.b);
+        float alpha = (1-_Transparency) + _Transparency * (0.2126*color.r + 0.7152*color.g + 0.0722*color.b);
         float enhancement = abs(dot(normalize(input.viewDir), input.normalDir)) * _Glossiness; //https://en.wikibooks.org/wiki/Cg_Programming/Unity/Silhouette_Enhancement
         alpha = min(1.0, alpha / enhancement); 
 
