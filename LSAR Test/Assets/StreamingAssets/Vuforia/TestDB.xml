@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
-  <Tracking>
-    <ImageTarget name="History" size="1.000000 0.858857" />
-    <ImageTarget name="Murial" size="35.000000 48.031448" />
-    <ImageTarget name="UtzonPoster" size="1.300000 2.978278" />
-    <ImageTarget name="pizzaandpasta" size="0.220000 0.287396" />
-    <ImageTarget name="tracker_MED" size="0.210000 0.296477" />
-  </Tracking>
+<QCARConfig>
+    <Tracking>
+        <ImageTarget name="History" size="1.000000 0.858857"/>
+        <ImageTarget name="Murial" size="35.000000 48.031448"/>
+        <ImageTarget name="UtzonPoster" size="1.300000 2.978278"/>
+        <ImageTarget name="pizzaandpasta" size="0.220000 0.287396"/>
+        <ImageTarget name="tracker_MED" size="0.210000 0.296477"/>
+        <ImageTarget name="TrackTester.Front" size="0.21000 0.29668"/>
+        <ImageTarget name="TrackTester.Right" size="0.21000 0.29668"/>
+        <MultiTarget name="TrackTester">
+            <Part name="TrackTester.Right" translation="-3.137263 0 3.371209" rotation="AD: 0 1 0 85.9"/>
+            <Part name="TrackTester.Front" translation="0 0 0" rotation="AD: 1 0 0 0"/>
+        </MultiTarget>
+    </Tracking>
 </QCARConfig>
