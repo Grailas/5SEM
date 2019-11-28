@@ -59,9 +59,9 @@ LightmapSettings:
     m_BakeResolution: 40
     m_AtlasSize: 1024
     m_AO: 1
-    m_AOMaxDistance: 0.1
+    m_AOMaxDistance: 0.2
     m_CompAOExponent: 0
-    m_CompAOExponentDirect: 3
+    m_CompAOExponentDirect: 5
     m_ExtractAmbientOcclusion: 0
     m_Padding: 2
     m_LightmapParameters: {fileID: 0}
@@ -96,7 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
-  m_LightingDataAsset: {fileID: 112000000, guid: 41c35fd917f03d34eb6bc8c56d7a03bc,
+  m_LightingDataAsset: {fileID: 112000000, guid: eaa2cd5be66b6ae4889087c6f2d0c59f,
     type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -224,6 +224,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Structures
       objectReference: {fileID: 0}
+    - target: {fileID: 4770504924382653724, guid: dd2495e0003566c46825c6913685477b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8390035874603245327, guid: dd2495e0003566c46825c6913685477b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -278,6 +283,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225352692788752375, guid: dd2495e0003566c46825c6913685477b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd2495e0003566c46825c6913685477b, type: 3}
