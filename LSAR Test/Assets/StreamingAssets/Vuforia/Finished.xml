@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+    <Tracking>
+        <ImageTarget name="NorreportTarget" size="4.800000 2.402724"/>
+        <ImageTarget name="Norreport_tracker_v1.Front" size="0.594000 0.419751"/>
+        <ImageTarget name="Norreport_tracker_v1.Right" size="0.594000 0.419901"/>
+        <MultiTarget name="Norreport_tracker_v1">
+            <Part name="Norreport_tracker_v1.Right" translation="0.296999990940094 0 0" rotation="AD: 0 1 0 90"/>
+            <Part name="Norreport_tracker_v1.Front" translation="0 0 0.296999990940094" rotation="AD: 1 0 0 0"/>
+        </MultiTarget>
+    </Tracking>
+</QCARConfig>
